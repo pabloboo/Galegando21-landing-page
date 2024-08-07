@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galegando21</title>
+    <link rel="icon" type="image/png" href="imaxes/logo-favicon.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%;
+            margin: 20px 0;
+        }
+        .logo {
+            width: 100px;
+            height: 100px;
+        }
+        .install-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: blue;
+        }
+        .scroll-container {
+            display: flex;
+            align-items: center;
+            width: 80%;
+            overflow: hidden;
+            position: relative;
+        }
+        .scroll-content {
+            display: flex;
+            transition: transform 0.3s ease;
+        }
+        .card {
+            width: 256px;
+            height: 125px;
+            margin: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .scroll-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 20px;
+            z-index: 1;
+        }
+        .scroll-button.left {
+            left: 0px;
+        }
+        .scroll-button.right {
+            right: 0px;
+        }
+        .video-container {
+            display: none;
+            width: 80%;
+            margin: 20px 0;
+        }
+        .video-container video {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <img src="imaxes/logo.png" alt="Galegando21 Logo" class="logo">
+        <div class="install-links">
+            <a href="https://play.google.com/store/apps/details?id=com.galegando21" target="_blank">Instalar en Android</a>
+            <a href="#">Instalar en iOS</a>
+        </div>
+    </div>
+    <div class="scroll-container">
+        <button class="scroll-button left">&lt;</button>
+        <div class="scroll-content">
+            <div class="card">
+                <img src="imaxes/pasagalego-text.png" alt="Xogo pasagalego" data-video-src="video1.mp4">
+            </div>
+            <div class="card">
+                <img src="imaxes/onde-estan-text.png" alt="Xogo onde están?" data-video-src="video2.mp4">
+            </div>
+            <div class="card">
+                <img src="imaxes/xogo-de-palabras-text.png" alt="Xogo xogo de palabras" data-video-src="video3.mp4">
+            </div>
+            <div class="card">
+                <img src="imaxes/atrapa-1-millon-text.png" alt="Xogo atrapa un millón" data-video-src="video4.mp4">
+            </div>
+            <div class="card">
+                <img src="imaxes/adivinha-ano-foto-text.png" alt="Xogo adiviña o ano da foto" data-video-src="video5.mp4">
+            </div>
+            <div class="card">
+                <img src="imaxes/sopa-de-letras-text.png" alt="Xogo sopa de letras" data-video-src="video6.mp4">
+            </div>
+            <div class="card">
+                <img src="imaxes/agora-caio-text.png" alt="Xogo agora caio" data-video-src="video7.mp4">
+            </div>
+            <div class="card">
+                <img src="imaxes/conexions-text.png" alt="Xogo conexións" data-video-src="video8.mp4">
+            </div>
+            <div class="card">
+                <img src="imaxes/ruleta-sorte-text.png" alt="Xogo ruleta da sorte" data-video-src="video9.mp4">
+            </div>
+            <div class="card">
+                <img src="imaxes/explosion-palabras-text.png" alt="Xogo explosión de palabras" data-video-src="video10.mp4">
+            </div>
+            <div class="card">
+                <img src="imaxes/atrapame-se-podes-text.png" alt="Xogo atrápame se podes" data-video-src="video11.mp4">
+            </div>
+            <div class="card">
+                <img src="imaxes/adivinha-personaxe-text.png" alt="Xogo adiviña o personaxe" data-video-src="video12.mp4">
+            </div>
+            <div class="card">
+                <img src="imaxes/verdade-ou-mentira-text.png" alt="Xogo verdade ou mentira" data-video-src="video13.mp4">
+            </div>
+            <div class="card">
+                <img src="imaxes/adivinha-escudo-text.png" alt="Xogo adiviña o escudo" data-video-src="video14.mp4">
+            </div>
+            <div class="card">
+                <img src="imaxes/wordle-text.png" alt="Xogo wordle" data-video-src="video15.mp4">
+            </div>
+            <div class="card">
+                <img src="imaxes/anagramas-text.png" alt="Xogo anagramas" data-video-src="video16.mp4">
+            </div>
+            <div class="card">
+                <img src="imaxes/proba-velocidade-text.png" alt="Xogo proba de velocidade" data-video-src="video17.mp4">
+            </div>
+            <div class="card">
+                <img src="imaxes/palabras-encadeadas-text.png" alt="Xogo palabras encadeadas" data-video-src="video18.mp4">
+            </div>
+            <div class="card">
+                <img src="imaxes/aforcado-text.png" alt="Xogo aforcado" data-video-src="video19.mp4">
+            </div>
+            <div class="card">
+                <img src="imaxes/debuxa-e-adivinha-text.png" alt="Xogo debuxa e adiviña" data-video-src="video20.mp4">
+            </div>
+            <div class="card">
+                <img src="imaxes/brisca-text.png" alt="Xogo brisca" data-video-src="video21.mp4">
+            </div>
+        </div>
+        <button class="scroll-button right">&gt;</button>
+    </div>
+    <div class="video-container">
+        <video controls>
+            <source src="" type="video/mp4">
+            Tu navegador no soporta la reproducción de videos.
+        </video>
+    </div>
+    <script>
+        const scrollContainer = document.querySelector('.scroll-content');
+        const scrollButtons = document.querySelectorAll('.scroll-button');
+        const videoContainer = document.querySelector('.video-container');
+        const videoElement = videoContainer.querySelector('video');
+
+        let scrollPosition = 0;
+        const itemsPerPage = 5;
+        const itemWidth = 256 + 20; // Width of one card + margin
+        const totalItems = document.querySelectorAll('.scroll-content .card').length;
+        const maxScrollPosition = (Math.ceil(totalItems / itemsPerPage) - 1) * itemsPerPage * itemWidth;
+
+        scrollButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const direction = button.classList.contains('left') ? -1 : 1;
+                scrollPosition += direction * itemsPerPage * itemWidth;
+                if (scrollPosition < 0) scrollPosition = 0;
+                if (scrollPosition > maxScrollPosition) scrollPosition = maxScrollPosition;
+                scrollContainer.style.transform = `translateX(-${scrollPosition}px)`;
+            });
+        });
+
+        document.querySelectorAll('.scroll-content .card img').forEach(img => {
+            img.addEventListener('click', () => {
+                const videoSrc = img.getAttribute('data-video-src');
+                videoElement.src = videoSrc;
+                videoContainer.style.display = 'block';
+            });
+        });
+    </script>
+</body>
+</html>
