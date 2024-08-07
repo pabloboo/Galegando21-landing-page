@@ -175,20 +175,27 @@
         const videoElement = videoContainer.querySelector('video');
 
         let scrollPosition = 0;
-        const itemsPerPage = 5;
-        const itemWidth = 256 + 20; // Width of one card + margin
-        const totalItems = document.querySelectorAll('.scroll-content .card').length;
-        const maxScrollPosition = (Math.ceil(totalItems / itemsPerPage) - 1) * itemsPerPage * itemWidth;
+        const cardWidth = 256 + 20; // card width + margin
+        const totalCards = document.querySelectorAll('.scroll-content .card').length;
 
-        scrollButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const direction = button.classList.contains('left') ? -1 : 1;
-                scrollPosition += direction * itemsPerPage * itemWidth;
-                if (scrollPosition < 0) scrollPosition = 0;
-                if (scrollPosition > maxScrollPosition) scrollPosition = maxScrollPosition;
-                scrollContainer.style.transform = `translateX(-${scrollPosition}px)`;
+        function updateScroll() {
+            const containerWidth = document.querySelector('.scroll-container').offsetWidth;
+            const itemsPerPage = Math.floor(containerWidth / cardWidth);
+            const maxScrollPosition = (totalCards - itemsPerPage) * cardWidth;
+
+            scrollButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const direction = button.classList.contains('left') ? -1 : 1;
+                    scrollPosition += direction * itemsPerPage * cardWidth;
+                    if (scrollPosition < 0) scrollPosition = 0;
+                    if (scrollPosition > maxScrollPosition) scrollPosition = maxScrollPosition;
+                    scrollContainer.style.transform = `translateX(-${scrollPosition}px)`;
+                });
             });
-        });
+        }
+
+        window.addEventListener('resize', updateScroll);
+        updateScroll();
 
         document.querySelectorAll('.scroll-content .card img').forEach(img => {
             img.addEventListener('click', () => {
