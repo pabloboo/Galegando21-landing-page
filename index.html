@@ -34,12 +34,14 @@
             display: flex;
             align-items: center;
             width: 80%;
-            overflow: hidden;
+            overflow-x: auto;
             position: relative;
+            scroll-snap-type: x mandatory;
         }
         .scroll-content {
             display: flex;
             transition: transform 0.3s ease;
+            scroll-snap-align: start;
         }
         .card {
             width: 256px;
@@ -52,6 +54,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            scroll-snap-align: start;
         }
         .card img {
             width: 100%;
@@ -82,6 +85,21 @@
         }
         .video-container video {
             width: 100%;
+        }
+
+
+        /* Ocultar esplazamiento horizontal deslizando en pantallas grandes */
+        @media (min-width: 768px) {
+            .scroll-container {
+                overflow-x: hidden;
+            }
+        }
+
+        /* Ocultar los botones de navegación en pantallas pequeñas */
+        @media (max-width: 767px) {
+            .scroll-button {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -203,6 +221,59 @@
                 videoElement.src = videoSrc;
                 videoContainer.style.display = 'block';
             });
+        });
+
+        // Scroll para dispositivos móviles
+        document.addEventListener('DOMContentLoaded', function() {
+            const scrollContainer = document.querySelector('.scroll-container');
+
+            if (window.innerWidth < 768) {
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+
+                scrollContainer.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    scrollContainer.classList.add('active');
+                    startX = e.pageX - scrollContainer.offsetLeft;
+                    scrollLeft = scrollContainer.scrollLeft;
+                });
+
+                scrollContainer.addEventListener('mouseleave', () => {
+                    isDown = false;
+                    scrollContainer.classList.remove('active');
+                });
+
+                scrollContainer.addEventListener('mouseup', () => {
+                    isDown = false;
+                    scrollContainer.classList.remove('active');
+                });
+
+                scrollContainer.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - scrollContainer.offsetLeft;
+                    const walk = (x - startX) * 3;
+                    scrollContainer.scrollLeft = scrollLeft - walk;
+                });
+
+                scrollContainer.addEventListener('touchstart', (e) => {
+                    isDown = true;
+                    startX = e.touches[0].pageX - scrollContainer.offsetLeft;
+                    scrollLeft = scrollContainer.scrollLeft;
+                });
+
+                scrollContainer.addEventListener('touchend', () => {
+                    isDown = false;
+                });
+
+                scrollContainer.addEventListener('touchmove', (e) => {
+                    if (!isDown) return;
+                    const x = e.touches[0].pageX - scrollContainer.offsetLeft;
+                    const walk = (x - startX) * 3;
+                    scrollContainer.scrollLeft = scrollLeft - walk;
+                });
+            }
         });
     </script>
 </body>
