@@ -82,9 +82,12 @@
             display: none;
             width: 80%;
             margin: 20px 0;
+            justify-content: center;
         }
         .video-container video {
-            width: 100%;
+            height: 85vh;
+            border: 5px solid black;
+            border-radius: 20px;
         }
 
 
@@ -95,17 +98,26 @@
             }
         }
 
-        /* Ocultar los botones de navegación en pantallas pequeñas */
         @media (max-width: 767px) {
+            /* Ocultar los botones de navegación en pantallas pequeñas */
             .scroll-button {
                 display: none;
+            }
+
+            .video-container {
+                display: none;
+                width: 80%;
+                margin: 20px 0;
+            }
+            .video-container video {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
     <div class="main-content">
-        <img src="imaxes/logo.png" alt="Galegando21 Logo" class="logo">
+        <img src="imaxes/logo.png" alt="Galegando21 Logo" class="logo" id="logo">
         <div class="install-links">
             <a href="https://play.google.com/store/apps/details?id=com.galegando21" target="_blank">Instalar en Android</a>
             <a href="#">Instalar en iOS</a>
@@ -196,6 +208,13 @@
         const cardWidth = 256 + 20; // card width + margin
         const totalCards = document.querySelectorAll('.scroll-content .card').length;
 
+        // Evento de clic en el logo para no reproducir videos
+        logo.addEventListener('click', () => {
+            videoElement.pause();
+            videoElement.src = '';
+            videoContainer.style.display = 'none';
+        });
+
         function updateScroll() {
             const containerWidth = document.querySelector('.scroll-container').offsetWidth;
             const itemsPerPage = Math.floor(containerWidth / cardWidth);
@@ -217,9 +236,11 @@
 
         document.querySelectorAll('.scroll-content .card img').forEach(img => {
             img.addEventListener('click', () => {
-                const videoSrc = img.getAttribute('data-video-src');
+                const videoSrc = 'videos/'+img.getAttribute('data-video-src');
                 videoElement.src = videoSrc;
-                videoContainer.style.display = 'block';
+                videoContainer.style.display = 'flex';
+                videoElement.autoplay = true;
+                videoElement.controls = false;
             });
         });
 
