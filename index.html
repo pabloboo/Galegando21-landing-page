@@ -112,6 +112,11 @@
             .video-container video {
                 width: 100%;
             }
+
+            .card {
+                width: 128px;
+                height: 60px;
+            }
         }
     </style>
 </head>
@@ -247,53 +252,8 @@
         // Scroll para dispositivos móviles
         document.addEventListener('DOMContentLoaded', function() {
             const scrollContainer = document.querySelector('.scroll-container');
-
             if (window.innerWidth < 768) {
-                let isDown = false;
-                let startX;
-                let scrollLeft;
-
-                scrollContainer.addEventListener('mousedown', (e) => {
-                    isDown = true;
-                    scrollContainer.classList.add('active');
-                    startX = e.pageX - scrollContainer.offsetLeft;
-                    scrollLeft = scrollContainer.scrollLeft;
-                });
-
-                scrollContainer.addEventListener('mouseleave', () => {
-                    isDown = false;
-                    scrollContainer.classList.remove('active');
-                });
-
-                scrollContainer.addEventListener('mouseup', () => {
-                    isDown = false;
-                    scrollContainer.classList.remove('active');
-                });
-
-                scrollContainer.addEventListener('mousemove', (e) => {
-                    if (!isDown) return;
-                    e.preventDefault();
-                    const x = e.pageX - scrollContainer.offsetLeft;
-                    const walk = (x - startX) * 3;
-                    scrollContainer.scrollLeft = scrollLeft - walk;
-                });
-
-                scrollContainer.addEventListener('touchstart', (e) => {
-                    isDown = true;
-                    startX = e.touches[0].pageX - scrollContainer.offsetLeft;
-                    scrollLeft = scrollContainer.scrollLeft;
-                });
-
-                scrollContainer.addEventListener('touchend', () => {
-                    isDown = false;
-                });
-
-                scrollContainer.addEventListener('touchmove', (e) => {
-                    if (!isDown) return;
-                    const x = e.touches[0].pageX - scrollContainer.offsetLeft;
-                    const walk = (x - startX) * 3;
-                    scrollContainer.scrollLeft = scrollLeft - walk;
-                });
+                scrollContainer.scrollIntoView({ behavior: 'smooth' });
             }
         });
     </script>
