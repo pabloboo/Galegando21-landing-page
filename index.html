@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galegando21</title>
+    <meta name="description" content="Descubre e xoga en galego ao pasapalabra, atrapa un millón, adiviñar o ano da foto, sopa de letras, atrápame se podes, wordle, aforcado e moitos máis minixogos divertidos.">
+    <title>Galegando21 - 21 minixogos en galego</title>
     <link rel="icon" type="image/png" href="imaxes/logo-favicon.png">
     <style>
         body {
@@ -105,6 +106,50 @@
             height: 85vh;
             border: 5px solid black;
             border-radius: 20px;
+        }
+        .info-button {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            background-color: #007ab5;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
         }
 
 
@@ -242,7 +287,137 @@
             <source src="" type="video/mp4">
             Tu navegador no soporta la reproducción de videos.
         </video>
+        <button class="info-button" onclick="openModal()">?</button>
     </div>
+
+    <!-- Modales de info -->
+    <div id="desc-video1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('desc-video1')">&times;</span>
+            <p><strong>Pasagalego:</strong> Este xogo está basado no famoso programa televisivo "Pasapalabra". Por cada letra do rosco terás que ler unha definición e responder unha palabra que comece ou conteña esa letra.</p>
+        </div>
+    </div>
+    <div id="desc-video2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('desc-video2')">&times;</span>
+            <p><strong>Onde están:</strong> Este xogo está badado en unha proba do concurso televisivo "Pasapalabra".  O obxectivo é encontrar a palabra que se mostra no recadro superior. Cando fas click en unha elipse revelase a palabra oculta correspondente a esa elipse. Se a palabra coincide coa que se mostra no recadro superior acertaches.  O xogo continúa ata que encontres todas as palabras no orden correcto.</p>
+        </div>
+    </div>
+    <div id="desc-video3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('desc-video3')">&times;</span>
+            <p><strong>Xogo de palabras:</strong> Este xogo proporcionache 7 letras, unha das cales está no centro e debe ser usada en cada palabra que formes.  O obxectivo é crear tantas palabras válidas como poidas usando esas letras, cada palabra debe ter un mínimo de catro letras. A medida que introduces palabras o xogo validaas según o diccionario e acumula a puntuación total.  Se queres rematar o xogo antes de chegar á puntuación total podes facelo mantendo premido o botón "Comprobar".</p>
+        </div>
+    </div>
+    <div id="desc-video4" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('desc-video4')">&times;</span>
+            <p><strong>Atrapa un millón:</strong> Basado no famoso programa televisivo, Atrapa un millón é un xogo no que o obxectivo é preservar a maior cantidade de diñeiro posible durante 8 preguntas.   Mantén presionado a imaxen do diñeiro e moveo ata  a opción na que queiras colocar o diñeiro  (só se pode mover un cuarto do diñeiro en cada movemento).</p>
+        </div>
+    </div>
+    <div id="desc-video5" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('desc-video5')">&times;</span>
+            <p><strong>Adiviña o ano da foto:</strong> Mostrarase unha foto e terás que adiviñar o ano no que foi tomada.   Move o control ao ano no que cres que se tomou a foto e fai click en "comprobar".   Cada xogo ten 5 rondas e podes obter ata un total de 10 puntos por ronda.</p>
+        </div>
+    </div>
+    <div id="desc-video6" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('desc-video6')">&times;</span>
+            <p><strong>Sopa de letras:</strong> Xoga a varios modos de dificultade do clásico xogo 'Sopa de letras'.</p>
+        </div>
+    </div>
+    <div id="desc-video7" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('desc-video7')">&times;</span>
+            <p><strong>Agora caio:</strong> En este xogo, basado no concurso televisivo "Ahora caigo", tes que acertar preguntas, completando os ocos que faltan nas respostas.   Toca en un comodín para usalo. Recorda usar o comodín se non sabes a resposta antes de que se esgote o tempo!</p>
+        </div>
+    </div>
+    <div id="desc-video8" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('desc-video8')">&times;</span>
+            <p><strong>Conexións:</strong> O obxectivo de ‘Conexións’ é encontrar grupos de 4 elementos que teñen algo en común.  Por exemplo salmón, troita, dourada e  rodaballo son os catro peixes.  As categorías sempre van ser máis específicas que ‘palabras de 5 letras’, ‘nomes’ ou ‘verbos’.  Cada puzle ten unha soa solución.</p>
+        </div>
+    </div>
+    <div id="desc-video9" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('desc-video9')">&times;</span>
+            <p><strong>Ruleta da sorte:</strong> A ruleta da sorte é un xogo basado no concurso televisivo co mesmo nome.   Preme o botón "TIRAR RULETA" para comezar a primeira tirada. Cando a ruleta se pare aparecerá en pantalla unha das accións que determinará o diñeiro que gañarás. Elixe unha letra tendo en conta que o número de veces que se repita esa letra será o multiplicador da cantidade recibida na ruleta.   Tamén hai accións especiais como "BOTE" ou "QUEBRA". Repite tiradas da ruleta e letras ata que completes o panel.   Se a letra non está no panel perderás a partida, ten coidado!</p>
+        </div>
+    </div>
+    <div id="desc-video10" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('desc-video10')">&times;</span>
+            <p><strong>Explosión de palabras:</strong> Este xogo consiste en formar palabras coas letras que van caendo na pantalla. Se a lista de letras chega ata a parte dereita da imaxen perderás.   Recibirás un punto por cada letra da palabra formada.</p>
+        </div>
+    </div>
+    <div id="desc-video11" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('desc-video11')">&times;</span>
+            <p><strong>Atrápame se podes:</strong> Basado na serie da TVG co mesmo nome, este xogo consiste en unha serie de preguntas de cultura xeral nas que o primeiro xogador en  chegar a 5 respostas correctas é o gañador.  Xoga ti só ou faino con un amigo para  ver quen é o máis erudito.</p>
+        </div>
+    </div>
+    <div id="desc-video12" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('desc-video12')">&times;</span>
+            <p><strong>Adiviña o personaxe:</strong> En este xogo, basado en unha proba do concurso televisivo "Ahora Caigo", o obxectivo é acertar o nome de un personaxe.  Para conseguilo por cada intento que fagas mostraraseche unha nova pista. Acerta o personaxe antes de que se esgoten as pistas!</p>
+        </div>
+    </div>
+    <div id="desc-video13" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('desc-video13')">&times;</span>
+            <p><strong>Verdade ou mentira:</strong> Terás que responder unha serie de preguntas con 2 opcións posibles: verdadeiro ou falso.  Cantas respostas correctas eres capaz de encadear?</p>
+        </div>
+    </div>
+    <div id="desc-video14" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('desc-video14')">&times;</span>
+            <p><strong>Adiviña o escudo:</strong> Este xogo consiste en unha serie de 10 preguntas con catro opcións posibles nas que terás que adiviñar de que lugar é o escudo que se mostra na pantalla.</p>
+        </div>
+    </div>
+    <div id="desc-video15" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('desc-video15')">&times;</span>
+            <p><strong>Wordle:</strong> Adiviña a palabra en 6 intentos   Despois de cada intento, a cor das letras muda para amosar o preto que estás de acertar a palabra.</p>
+        </div>
+    </div>
+    <div id="desc-video16" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('desc-video16')">&times;</span>
+            <p><strong>Anagramas:</strong> Mostraraseche unha palabra coas súas letras desordeadas.  O obxectivo do xogo é reordear as letras de esa palabra correctamente. Escribea no campo de texto que verás en pantalla e preme "Comprobar" para introducir a resposta.</p>
+        </div>
+    </div>
+    <div id="desc-video17" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('desc-video17')">&times;</span>
+            <p><strong>Proba de velocidade:</strong> Basado en unha proba co mesmo nome do concurso televisivo "La ruleta de la suerte" este xogo consiste en adiviñar os paneis o máis rápido posible.   Empezas con un panel en branco e unha pista e cada 2 segundos revelase unha letra.   Escribe o panel completo e fai click en comprobar para pasar ao seguinte panel.</p>
+        </div>
+    </div>
+    <div id="desc-video18" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('desc-video18')">&times;</span>
+            <p><strong>Palabras encadeadas:</strong> O obxectivo de este xogo é encadear o maior número de palabras sen repetir.  Comezarás con unha sílaba e terás 10 segundos para escribir unha palabra que exista no diccionario e comece coas letras que aparecen no campo de texto.  Por cada palabra que escribas e encadees correctamente repetirase o procedemento. Exemplo: monxa-xamon-monte.  Na parte superior verás o tempo restante. A medida que o tempo se esgote a cor de fondo irá cambiando para alertarte.</p>
+        </div>
+    </div>
+    <div id="desc-video19" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('desc-video19')">&times;</span>
+            <p><strong>Aforcado:</strong> O aforcado é un pasatempo no que o xogador intenta adiviñar unha palabra antes de que o boneco sexa debuxado completamente en unha forca.  O xogador propón letras que cre que están na palabra oculta e o xogo revela se esas letras están presentes ou non.  Se o xogador adiviña correctamente todas as letras antes de que o boneco sea debuxado por completo, gaña; no caso contrario, perde.</p>
+        </div>
+    </div>
+    <div id="desc-video20" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('desc-video20')">&times;</span>
+            <p><strong>Debuxa e adiviña:</strong> "Debuxa e adiviña" disfrutaralo máis con un amigo ou familiar. Na pantalla aparecerá unha palabra que só poderá ver quen vai debuxar.  A persoa que vai debuxar preme o botón de ocultar palabra e comeza a facer o debuxo necesario para que a outra persoa adiviñe cal é a palabra oculta.</p>
+        </div>
+    </div>
+    <div id="desc-video21" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('desc-video21')">&times;</span>
+            <p><strong>Brisca:</strong> A Brisca é un xogo de cartas da familia do Tute, é decir, un xogo de bazas con un pau de triunfo no que as cartas se van tomandos según se van xogando as bazas.  Na man do xogador haberá 3 cartas en todo momento ata finalizar a partida. En cada xogada cada xogador descobre unha carta e o que teña a maior carta do pau do triunfo ou a carta máis alta do pau de saída gaña a baza quedandose coa puntuación de ambas cartas e comezando a seguinte baza. Para determinar quen gañou a baza en caso de que ambos xogadores escollan unha carta do mesmo pau primeiro mirase a maior puntuación da carta e en caso de ter ambas puntuación 0 mirase cal é a carta máis alta.  Cada xogador rouba unha carta do mazo para xogar a seguinte baza. Gaña o xogador que obteña máis puntos.  Se tes na túa man o número 7 do trunfo podes cambialo pola carta de trunfo mantendo presionada a túa carta. Da mesma forma o 2 do trunfo pode cambiarse polo 7,6,5 ou 4.</p>
+        </div>
+    </div>
+
     <script>
         const scrollContainer = document.querySelector('.scroll-content');
         const scrollButtons = document.querySelectorAll('.scroll-button');
@@ -296,6 +471,26 @@
                 scrollContainer.scrollIntoView({ behavior: 'smooth' });
             }
         });
+
+        // Info de los juegos
+        function openModal() {
+            const videoUrl = videoElement.getAttribute('src');
+            const descId = "desc-"+videoUrl.split('/')[1].split('.')[0];
+            document.getElementById(descId).style.display = "block";
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            var modals = document.getElementsByClassName('modal');
+            for (var i = 0; i < modals.length; i++) {
+                if (event.target == modals[i]) {
+                    modals[i].style.display = "none";
+                }
+            }
+        }
     </script>
 </body>
 </html>
