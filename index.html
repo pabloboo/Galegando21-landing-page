@@ -202,6 +202,14 @@
                 height: 60px;
             }
         }
+
+        @media only screen and (min-width: 768px) and (max-width: 1024px)  {
+            .install-links {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -283,7 +291,7 @@
         <button class="scroll-button right">&gt;</button>
     </div>
     <div class="video-container">
-        <video controls>
+        <video controls muted>
             <source src="" type="video/mp4">
             Tu navegador no soporta la reproducción de videos.
         </video>
