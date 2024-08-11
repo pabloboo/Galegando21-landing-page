@@ -291,7 +291,7 @@
         <button class="scroll-button right">&gt;</button>
     </div>
     <div class="video-container">
-        <video controls muted>
+        <video controls muted id="videoDemo">
             <source src="" type="video/mp4">
             Tu navegador no soporta la reproducción de videos.
         </video>
@@ -465,12 +465,16 @@
         document.querySelectorAll('.scroll-content .card img').forEach(img => {
             img.addEventListener('click', () => {
                 const videoSrc = 'videos/'+img.getAttribute('data-video-src');
+                videoContainer.style.display = 'none';
                 videoElement.src = videoSrc;
-                videoContainer.style.display = 'flex';
                 videoElement.autoplay = true;
                 videoElement.controls = false;
             });
         });
+
+        document.getElementById('videoDemo').onloadeddata = function() {
+            videoContainer.style.display = 'flex'; // Mostrar el contenedor del vídeo cuando esté cargado
+        };
 
         // Scroll para dispositivos móviles
         document.addEventListener('DOMContentLoaded', function() {
