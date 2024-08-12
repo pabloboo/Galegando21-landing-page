@@ -107,6 +107,14 @@
             border: 5px solid black;
             border-radius: 20px;
         }
+        .loading-icon {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2em;
+        }
         .info-button {
             position: absolute;
             top: 50%;
@@ -297,6 +305,7 @@
         </video>
         <button class="info-button" onclick="openModal()">?</button>
     </div>
+    <div class="loading-icon" id="loadingIcon">Cargando...⏳</div>
 
     <!-- Modales de info -->
     <div id="desc-video1" class="modal">
@@ -431,6 +440,7 @@
         const scrollButtons = document.querySelectorAll('.scroll-button');
         const videoContainer = document.querySelector('.video-container');
         const videoElement = videoContainer.querySelector('video');
+        const loadingIcon = document.getElementById('loadingIcon');
 
         let scrollPosition = 0;
         const cardWidth = 256 + 20; // card width + margin
@@ -465,6 +475,7 @@
         document.querySelectorAll('.scroll-content .card img').forEach(img => {
             img.addEventListener('click', () => {
                 const videoSrc = 'videos/'+img.getAttribute('data-video-src');
+                loadingIcon.style.display = 'block';
                 videoContainer.style.display = 'none';
                 videoElement.src = videoSrc;
                 videoElement.autoplay = true;
@@ -474,6 +485,7 @@
 
         document.getElementById('videoDemo').onloadeddata = function() {
             videoContainer.style.display = 'flex'; // Mostrar el contenedor del vídeo cuando esté cargado
+            loadingIcon.style.display = 'none';
         };
 
         // Scroll para dispositivos móviles
